@@ -1,0 +1,61 @@
+
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Healthy Food Detector</title>
+  <link rel="stylesheet" href="style.css" />
+  <!-- IMPORTANT: use the same script tags the exported Teachable Machine example suggests if present.
+       These are commonly used compatible versions (you can swap if your model's sample uses other versions) -->
+  <script src="https://cdn.jsdelivr.net/npm/@tensorflow/tfjs@1.7.4/dist/tf.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/@teachablemachine/image@0.8.4/dist/teachablemachine-image.min.js"></script>
+</head>
+<body>
+  <header class="app-header">
+    <h1>🍏 Healthy Food Detector</h1>
+    <p class="lead">Webcam / Upload → Detect food (Teachable Machine) → Show nutrition (demo + optional USDA)</p>
+  </header>
+
+  <main class="container">
+    <section class="controls">
+      <div class="left">
+        <button id="start-webcam">Start Webcam</button>
+        <button id="stop-webcam" disabled>Stop Webcam</button>
+        <label class="upload-btn">
+          <input id="upload" type="file" accept="image/*" />
+          Upload Image
+        </label>
+      </div>
+      <div class="right">
+        <select id="confidence-threshold">
+          <option value="0.20">Threshold: 20%</option>
+          <option value="0.30" selected>Threshold: 30%</option>
+          <option value="0.40">Threshold: 40%</option>
+        </select>
+      </div>
+    </section>
+
+    <section class="preview-grid">
+      <div id="webcam-container" class="preview-card">
+        <!-- webcam.canvas is appended here -->
+        <div class="placeholder">Webcam / image preview</div>
+      </div>
+
+      <div id="results" class="preview-card">
+        <h3>Prediction</h3>
+        <div id="top-result" class="muted">No prediction yet</div>
+        <div id="label-list"></div>
+      </div>
+
+      <div id="nutrition" class="preview-card">
+        <h3>Nutrition (demo)</h3>
+        <div id="nutrition-card" class="muted">No nutrition data available</div>
+      </div>
+    </section>
+
+  </main>
+
+  <script src="script.js"></script>
+</body>
+</html>
